@@ -72,9 +72,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case SS_KEYMAP:
       if (record->event.pressed) {
-        SEND_STRING("[BASE]\n  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,\n  KC_A,    KC_S,    KC_D,    KC_F_L3, KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_ESCS,\n  KC_ZCTL, KC_XALT, KC_CGUI, KC_V_L4, KC_SPL2, KC_B_L1, KC_N_L5, KC_MALT, KC_BSCT, KC_ENTS\n\n[L1]\n  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,\n  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,\n  _______, _______, _______, _______, KC_BSPC, _______, _______, _______, _______, _______\n\n[L2]\n  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,\n  KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______, _______, KC_GRV,\n  _______, _______, _______, _______, _______, KC_DEL,  _______, _______, _______, _______\n\n[L3]\n  _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,\n  KC_TAB,  _______, _______, _______, _______, KC_COMM, KC_DOT,  KC_SLSH, KC_SCLN, KC_QUOT,\n  _______, _______, _______, _______, KC_BSPC, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT\n\n[L4]\n  _______, _______, _______, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,\n  KC_TAB,  _______, _______, _______, _______, KC_LT,   KC_GT,   KC_QUES, KC_COLN, KC_DQUO,\n  _______, _______, KC_GUIC, _______, KC_BSPC, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END\n\n[L5]\n  RGB_TOG, RGB_MOD, _______, QK_BOOT, RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, SS_KEYMAP,\n  _______, _______, DB_TOGG, _______, RGB_HUD, RGB_SAD, RGB_VAD, _______, _______, _______,\n  BL_STEP, _______, KC_GUIC, _______, _______, _______, _______, DT_DOWN, DT_UP,   DT_PRNT\n");
+        SEND_STRING("[LAYER 0]\n");
+        SEND_STRING("  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,\n");
+        SEND_STRING("  KC_A,    KC_S,    KC_D,    KC_F_L3, KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_ESCS,\n");
+        SEND_STRING("  KC_ZCTL, KC_XALT, KC_CGUI, KC_V_L4, KC_SPL2, KC_B_L1, KC_N_L5, KC_MALT, KC_BSCT, KC_ENTS\n");
+        SEND_STRING("\n");
+        SEND_STRING("[LAYER 1]\n");
+        SEND_STRING("  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,\n");
+        SEND_STRING("  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,\n");
+        SEND_STRING("  _______, _______, _______, _______, KC_BSPC, _______, _______, _______, _______, _______\n");
+        SEND_STRING("\n");
+        SEND_STRING("[LAYER 2]\n");
+        SEND_STRING("  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,\n");
+        SEND_STRING("  KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______, _______, KC_GRV,\n");
+        SEND_STRING("  _______, _______, _______, _______, _______, KC_DEL,  _______, _______, _______, _______\n");
+        SEND_STRING("\n");
+        SEND_STRING("[LAYER 3]\n");
+        SEND_STRING("  _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,\n");
+        SEND_STRING("  KC_TAB,  _______, _______, _______, _______, KC_COMM, KC_DOT,  KC_SLSH, KC_SCLN, KC_QUOT,\n");
+        SEND_STRING("  _______, _______, _______, _______, KC_BSPC, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT\n");
+        SEND_STRING("\n");
+        SEND_STRING("[LAYER 4]\n");
+        SEND_STRING("  _______, _______, _______, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,\n");
+        SEND_STRING("  KC_TAB,  _______, _______, _______, _______, KC_LT,   KC_GT,   KC_QUES, KC_COLN, KC_DQUO,\n");
+        SEND_STRING("  _______, _______, KC_GUIC, _______, KC_BSPC, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END\n");
+        SEND_STRING("\n");
+        SEND_STRING("[LAYER 5]\n");
+        SEND_STRING("  RGB_TOG, RGB_MOD, _______, QK_BOOT, RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, SS_KEYMAP,\n");
+        SEND_STRING("  _______, _______, DB_TOGG, _______, RGB_HUD, RGB_SAD, RGB_VAD, _______, _______, _______,\n");
+        SEND_STRING("  BL_STEP, _______, KC_GUIC, _______, _______, _______, _______, DT_DOWN, DT_UP,   DT_PRNT\n");
       }
       return false;
   }
   return true;
 }
+
+
+
+
+
+
