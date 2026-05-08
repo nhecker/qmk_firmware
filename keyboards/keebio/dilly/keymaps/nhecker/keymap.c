@@ -1,7 +1,9 @@
 #include QMK_KEYBOARD_H
+#include "hardware/structs/rosc.h"
 
 enum custom_keycodes {
-  SS_KEYMAP
+  SS_KEYMAP = SAFE_RANGE,
+  SS_HRNG
 };
 
 #define _BASE 0
@@ -61,15 +63,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_FN5] = LAYOUT_ortho_3x10(
-    RM_TOGG, RM_NEXT, _______, QK_BOOT, RM_HUEU, RM_SATU, RM_VALU, _______, _______, SS_KEYMAP,
+    RM_TOGG, RM_NEXT, _______, QK_BOOT, RM_HUEU, RM_SATU, RM_VALU, _______, SS_HRNG, SS_KEYMAP,
     _______, _______, DB_TOGG, _______, RM_HUED, RM_SATD, RM_VALD, _______, _______, _______,
     BL_STEP, _______, KC_GUIC, _______, _______, _______, _______, DT_DOWN, DT_UP,   DT_PRNT
   )
 
 };
 
+static uint8_t rosc_random_byte(void) {
+  uint8_t byte = 0;
+  for (int i = 0; i < 8; i++) {
+    byte = (byte << 1) | (rosc_hw->randombit & 1);
+  }
+  return byte;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case SS_HRNG:
+      if (record->event.pressed) {
+        char hex[17];
+        for (int i = 0; i < 8; i++) {
+          uint8_t b = rosc_random_byte();
+          hex[i * 2]     = "0123456789abcdef"[b >> 4];
+          hex[i * 2 + 1] = "0123456789abcdef"[b & 0x0f];
+        }
+        hex[16] = '\0';
+        send_string(hex);
+      }
+      return false;
     case SS_KEYMAP:
       if (record->event.pressed) {
         SEND_STRING("[L0 Base]\n");
@@ -98,7 +120,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING("  .      .      G-c    .      BS     .      HOME   PGDN   PGUP   END\n");
         SEND_STRING("\n");
         SEND_STRING("[L5 RGB/System]\n");
-        SEND_STRING("  RM_TOG RM_NXT .      BOOT   RM_HU+ RM_SA+ RM_VA+ .      .      KEYMAP\n");
+        SEND_STRING("  RM_TOG RM_NXT .      BOOT   RM_HU+ RM_SA+ RM_VA+ .      RANDOM KEYMAP\n");
         SEND_STRING("  .      .      DB_TOG .      RM_HU- RM_SA- RM_VA- .      .      .\n");
         SEND_STRING("  LED    .      GUI+c  .      .      .      .      DLAY-  DLAY+  DLAY=\n");
       }
