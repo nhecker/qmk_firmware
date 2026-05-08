@@ -72,8 +72,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 static uint8_t rosc_random_byte(void) {
   uint8_t byte = 0;
-  for (int i = 0; i < 8; i++) {
-    byte = (byte << 1) | (rosc_hw->randombit & 1);
+  for (int i = 0; i < 8; ) {
+    uint8_t a = rosc_hw->randombit & 1;
+    uint8_t b = rosc_hw->randombit & 1;
+    if (a != b) {
+      byte = (byte << 1) | a;
+      i++;
+    }
   }
   return byte;
 }
