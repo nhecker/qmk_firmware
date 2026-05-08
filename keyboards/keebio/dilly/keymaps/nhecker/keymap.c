@@ -72,35 +72,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case SS_KEYMAP:
       if (record->event.pressed) {
-        SEND_STRING("[LAYER 0]\n");
-        SEND_STRING("  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,\n");
-        SEND_STRING("  KC_A,    KC_S,    KC_D,    KC_F_L3, KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_ESCS,\n");
-        SEND_STRING("  KC_ZCTL, KC_XALT, KC_CGUI, KC_V_L4, KC_SPL2, KC_B_L1, KC_N_L5, KC_MALT, KC_BSCT, KC_ENTS\n");
+        SEND_STRING("[L0 Base]\n");
+        SEND_STRING("  q      w      e      r      t      y      u      i      o      p\n");
+        SEND_STRING("  a-SFT  s      d      f-L3   g      h      j      k      l      ESC-SFT\n");
+        SEND_STRING("  z-CTL  x-ALT  c-GUI  v-L4   SPC-L2 b-L1   n-L5   m-ALT  BS-CTL ENT-SFT\n");
         SEND_STRING("\n");
-        SEND_STRING("[LAYER 1]\n");
-        SEND_STRING("  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,\n");
-        SEND_STRING("  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,\n");
-        SEND_STRING("  _______, _______, _______, _______, KC_BSPC, _______, _______, _______, _______, _______\n");
+        SEND_STRING("[L1 Numbers]\n");
+        SEND_STRING("  1      2      3      4      5      6      7      8      9      0\n");
+        SEND_STRING("  F1     F2     F3     F4     F5     F6     F7     F8     F9     F10\n");
+        SEND_STRING("  .      .      .      .      BS     .      .      .      .      .\n");
         SEND_STRING("\n");
-        SEND_STRING("[LAYER 2]\n");
-        SEND_STRING("  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,\n");
-        SEND_STRING("  KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______, _______, KC_GRV,\n");
-        SEND_STRING("  _______, _______, _______, _______, _______, KC_DEL,  _______, _______, _______, _______\n");
+        SEND_STRING("[L2 Symbols]\n");
+        SEND_STRING("  !      @      #      $      %%     ^      &      *      (      )\n");
+        SEND_STRING("  F11    F12    .      .      .      .      PERIOD .      .      `\n");
+        SEND_STRING("  .      .      .      .      .      DEL    .      .      .      .\n");
         SEND_STRING("\n");
-        SEND_STRING("[LAYER 3]\n");
-        SEND_STRING("  _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,\n");
-        SEND_STRING("  KC_TAB,  _______, _______, _______, _______, KC_COMM, KC_DOT,  KC_SLSH, KC_SCLN, KC_QUOT,\n");
-        SEND_STRING("  _______, _______, _______, _______, KC_BSPC, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT\n");
+        SEND_STRING("[L3 Brackets/Nav]\n");
+        SEND_STRING("  .      .      .      .      .      -      =      [      ]      \\\n");
+        SEND_STRING("  TAB    .      .      .      .      ,      .      /      ;      '\n");
+        SEND_STRING("  .      .      .      .      BS     .      LEFT   DOWN   UP     RIGHT\n");
         SEND_STRING("\n");
-        SEND_STRING("[LAYER 4]\n");
-        SEND_STRING("  _______, _______, _______, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,\n");
-        SEND_STRING("  KC_TAB,  _______, _______, _______, _______, KC_LT,   KC_GT,   KC_QUES, KC_COLN, KC_DQUO,\n");
-        SEND_STRING("  _______, _______, KC_GUIC, _______, KC_BSPC, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END\n");
+        SEND_STRING("[L4 Shifted Brackets/Nav]\n");
+        SEND_STRING("  .      .      .      .      .      _      +      {      }      |\n");
+        SEND_STRING("  TAB    .      .      .      .      <      >      ?      :      \"\n");
+        SEND_STRING("  .      .      G-c    .      BS     .      HOME   PGDN   PGUP   END\n");
         SEND_STRING("\n");
-        SEND_STRING("[LAYER 5]\n");
-        SEND_STRING("  RGB_TOG, RGB_MOD, _______, QK_BOOT, RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, SS_KEYMAP,\n");
-        SEND_STRING("  _______, _______, DB_TOGG, _______, RGB_HUD, RGB_SAD, RGB_VAD, _______, _______, _______,\n");
-        SEND_STRING("  BL_STEP, _______, KC_GUIC, _______, _______, _______, _______, DT_DOWN, DT_UP,   DT_PRNT\n");
+        SEND_STRING("[L5 RGB/System]\n");
+        SEND_STRING("  RM_TOG RM_NXT .      BOOT   RM_HU+ RM_SA+ RM_VA+ .      .      KEYMAP\n");
+        SEND_STRING("  .      .      DB_TOG .      RM_HU- RM_SA- RM_VA- .      .      .\n");
+        SEND_STRING("  LED    .      GUI+c  .      .      .      .      DLAY-  DLAY+  DLAY=\n");
       }
       return false;
   }
